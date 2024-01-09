@@ -96,7 +96,7 @@ $$
 w_1 \cdot x_1 + w_2 \cdot x_2 + w_3 \cdot x_3 + b = 0
 $$
 
-For example, for a hyperplane given by $w = \begin{bmatrix} 1 \\ 2 \\ 3 \end{bmatrix}$ and $b = 4$, its equation becomes:
+For example, for a hyperplane given by ![equation1](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fw123.png?alt=media&token=75d38b24-3a1f-4339-8b6d-9e5ff9eab3bc) and ![equation2](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fb4.png?alt=media&token=6801864c-5de1-44ed-8707-acb497704091) , its equation becomes:
 
 $$
 x_1 + 2x_2 + 3x_3 + 4 = 0
@@ -268,17 +268,13 @@ To better understand how the **Kernel Trick** in SVM operates, let's start by re
 
 The **primal** formulation:
 
-$$
-\underset{w, b}{\text{minimize }} \frac{1}{2} \|w\|_2^2 + C\sum_{i=1}^{m} \xi_i, \quad \text{subject to  } \begin{cases} w^T x_i + b \geq 1 - \xi_i, \\ \xi_i \geq 0, \end{cases}
-$$
+![equation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fsvm6_1.png?alt=media&token=7bae7991-3a5e-4f66-9ab9-5f6d980c8a2c)
 
 where the first part of the above equation is the regularization term and the **second** part is the loss function.
 
 We can write the **Lagrangian for the constrained optimization problem** as follows:
 
-$$
-\mathcal{L}(w, b, \xi, \alpha, \mu) = \frac{1}{2} \|w\|_2^2 + C\sum_{i=1}^{m} \xi_i - \sum_{i=1}^{m} \alpha_i (w^T x_i + b - 1 + \xi_i) - \sum_{i=1}^{m} \mu_i \xi_i,
-$$
+![equation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fsvm6_2.png?alt=media&token=4bd80b9c-2684-4357-b395-edec4c1cc11a)
 
 where $\alpha_i$ and $\mu_i$ are Lagrange multipliers. After taking the partial derivatives of the above equation with respect to $w$, $b$, and $\xi_i$ and setting them to $0$, one gets the primal form of the problem.
 
@@ -669,21 +665,11 @@ Let's define the key terms:
 
 The primal problem can be formulated as:
 
-$$
-$$
-\text{minimize} \quad & \frac{1}{2} \| \mathbf{w} \|^2 + C \sum_{i=1}^{m} \xi_i \\ 
-\text{subject to} \quad & y^{(i)} (\mathbf{w}^T\mathbf{x}^{(i)} + b) \geq 1 - \xi_i, \quad \text{and} \quad \xi_i \geq 0 \text{ for } i = 1, \ldots, m.
-$$
-$$
+![equation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fsvm12_1.png?alt=media&token=981e1b0b-f7c8-48b8-a6b1-57e15fb736fc)
 
 The associated Lagrangian function is:
 
-$$
-$$
-L(\mathbf{w}, b, \xi, \alpha, \mu) & = \frac{1}{2} \| \mathbf{w} \|^2 + C \sum_{i=1}^{m} \xi_i - \sum_{i=1}^{m} \alpha_i \left( y^{(i)} (\mathbf{w}^T\mathbf{x}^{(i)} + b) - 1 + \xi_i \right) - \sum_{i=1}^{m} \mu_i \xi_i \\
-& = \frac{1}{2} \| \mathbf{w} \|^2 - \sum_{i=1}^{m} \alpha_i y^{(i)} \mathbf{w}^T\mathbf{x}^{(i)} - \sum_{i=1}^{m} \alpha_i y^{(i)} b + \sum_{i=1}^{m} \alpha_i + C \sum_{i=1}^{m} \left( \xi_i - \alpha_i - \mu_i \xi_i \right)
-$$
-$$
+![equation](https://firebasestorage.googleapis.com/v0/b/dev-stack-app.appspot.com/o/svm%2Fsvm12_2.png?alt=media&token=fae8bf6e-e87c-42f3-babd-69dae515cc6c)
 
 Terms involving $\mu$ (introduced to handle the non-negativity of $\xi$) and the $\alpha_i$'s define the dual problem, and the solution to this dual problem provides the support vectors.
 
